@@ -1,0 +1,17 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    links:
+      - mongodb
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/chat
+      - PORT=8080
+  mongodb:
+    image: mongo:4.4
+    volumes:
+      - mongodb_data:/data/db
+volumes:
+  mongodb_data:

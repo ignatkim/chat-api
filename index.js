@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const cors = require("cors");
 const mongoose = require('mongoose');
 const exitHook = require('async-exit-hook');
@@ -13,7 +14,7 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(cors());
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 app.use('/users', users);
 app.use('/chat', chat);
